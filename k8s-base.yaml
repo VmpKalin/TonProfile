@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: lastflag-profile
+spec:
+  selector:
+    matchLabels:
+      app: lastflag-profile
+  template:
+    metadata:
+      labels:
+        app: lastflag-profile
+    spec:
+      containers:
+      - name: lastflag-profile
+        image: REPOSITORY_PLACEHOLDER/IMAGE_NAME_PLACEHOLDER:IMAGE_TAG_PLACEHOLDER
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: lastflag-profile
+  annotations:
+    version: IMAGE_TAG_PLACEHOLDER
+    release: RELEASE_PLACEHOLDER
+  labels:
+    app: lastflag-profile
+spec:
+  selector:
+    app: lastflag-profile
+  ports:
+    - protocol: TCP
+      port: 7569
+      targetPort: 80

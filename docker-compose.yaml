@@ -1,0 +1,9 @@
+services:
+  profile:
+    # LOCAL
+    # build:
+    #   context: .
+    #   dockerfile: Dockerfile
+    image: ghcr.io/vmpkalin/roboton-profile:v1.2.0
+    ports:
+      - 7569:7569

@@ -1,0 +1,7 @@
+# $1 path to config
+
+set -euxo pipefail
+
+source $1
+
+sed "s|RELEASE_PLACEHOLDER|$RELEASE|g; s|IMAGE_NAME_PLACEHOLDER|$IMAGE_NAME|g; s|IMAGE_TAG_PLACEHOLDER|$IMAGE_TAG|g; s|REPOSITORY_PLACEHOLDER|$REPOSITORY|g" k8s-base.yaml >> profile-$RELEASE-$IMAGE_TAG.yaml
